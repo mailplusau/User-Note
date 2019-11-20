@@ -43,8 +43,10 @@ function saveRecord() {
 
     var customer_id = parseInt(nlapiGetFieldValue('custpage_customer_id'));
 
+    var userNoteRecord = nlapiCreateRecord('note');
 
     if (nlapiGetFieldValue('custpage_cancel') == 'true') {
+        userNoteRecord.setFieldValue('title', 'Cancel');
         var customerRecord = nlapiLoadRecord('customer', customer_id);
         var zee_id = customerRecord.getFieldValue('partner');
         var companyName = customerRecord.getFieldValue('companyname');
@@ -65,12 +67,13 @@ function saveRecord() {
 
 
 
+    } else {
+        userNoteRecord.setFieldValue('title', 'User Note');
     }
 
-    var userNoteRecord = nlapiCreateRecord('note');
-
+    
     userNoteRecord.setFieldValue('entity', customer_id);
-    userNoteRecord.setFieldValue('title', 'User Note');
+    
     userNoteRecord.setFieldValue('direction', $('#direction option:selected').val());
     userNoteRecord.setFieldValue('notetype', $('#notetype option:selected').val());
     userNoteRecord.setFieldValue('note', $('#note').val() + '\n\n Operator / Franchisee Notified');
