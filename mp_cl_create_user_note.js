@@ -24,6 +24,9 @@ function showAlert(message) {
     $('#alert').show();
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0;
+    // setTimeout(function() {
+    //     $("#alert .close").trigger('click');
+    // }, 100000);
     // $(window).scrollTop($('#alert').offset().top);
 }
 
@@ -71,9 +74,9 @@ function saveRecord() {
         userNoteRecord.setFieldValue('title', 'User Note');
     }
 
-    
+
     userNoteRecord.setFieldValue('entity', customer_id);
-    
+
     userNoteRecord.setFieldValue('direction', $('#direction option:selected').val());
     userNoteRecord.setFieldValue('notetype', $('#notetype option:selected').val());
     userNoteRecord.setFieldValue('note', $('#note').val() + '\n\n Operator / Franchisee Notified');
