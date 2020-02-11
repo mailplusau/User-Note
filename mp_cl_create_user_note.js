@@ -54,6 +54,7 @@ function saveRecord() {
         var zee_id = customerRecord.getFieldValue('partner');
         var companyName = customerRecord.getFieldValue('companyname');
         var entityid = customerRecord.getFieldValue('entityid');
+        var cancellation_date = customerRecord.getFieldValue('custentity13');
 
         var reason = nlapiGetFieldValue('custpage_reason')
 
@@ -62,10 +63,10 @@ function saveRecord() {
 
         if (isNullorEmpty($('#note').val())) {
             //112209 Chloe Young
-            nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + reason + ' - ' + entityid + ' ' + companyName, 'Customer Cancelled', 'raine.giderson@mailplus.com.au')
+            nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName, 'Customer Cancelled effective ' + cancellation_date, 'raine.giderson@mailplus.com.au')
         } else {
             //112209 Chloe Young
-            nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + reason + ' - ' + entityid + ' ' + companyName, $('#note').val(), 'raine.giderson@mailplus.com.au')
+            nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName + ' effective ' + cancellation_date, $('#note').val(), 'raine.giderson@mailplus.com.au')
         }
 
 
