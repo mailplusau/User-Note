@@ -43,6 +43,12 @@ function userNote(request, response) {
 
 		inlineHtml += '<div class="se-pre-con"></div><div class="container" style="padding-top: 3%;"><div id="alert" class="alert alert-danger fade in"></div>';
 
+		inlineHtml += '<div class="form-group container title_section">';
+		inlineHtml += '<div class="row">';
+		inlineHtml += '<div class="col-xs-6 title"><div class="input-group"><span class="input-group-addon" id="title_text">TITLE </span><input type="text" id="title" class="form-control title" /></div></div>';
+		inlineHtml += '</div>';
+		inlineHtml += '</div>';
+
 		inlineHtml += '<div class="form-group container survey_section">';
 		inlineHtml += '<div class="row">';
 		inlineHtml += '<div class="col-xs-6 survey1"><div class="input-group"><span class="input-group-addon" id="survey1_text">DIRECTION </span><select id="direction" class="form-control direction" required><option></option>';
