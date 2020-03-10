@@ -72,7 +72,12 @@ function saveRecord() {
 
 
     } else {
-        userNoteRecord.setFieldValue('title', 'User Note');
+        if(isNullorEmpty($('#title').val())){
+            serNoteRecord.setFieldValue('title', $('#title').val());
+        } else {
+            userNoteRecord.setFieldValue('title', 'User Note');
+        }
+        
     }
 
 
