@@ -52,6 +52,7 @@ function saveRecord() {
         userNoteRecord.setFieldValue('title', 'Cancel');
         var customerRecord = nlapiLoadRecord('customer', customer_id);
         var zee_id = customerRecord.getFieldValue('partner');
+        // var zee_text = customerRecord.getFieldText('partner');
         var companyName = customerRecord.getFieldValue('companyname');
         var entityid = customerRecord.getFieldValue('entityid');
         var cancellation_date = customerRecord.getFieldValue('custentity13');
@@ -69,15 +70,19 @@ function saveRecord() {
             nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName + ' effective ' + cancellation_date, 'If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br></br>' + $('#note').val(), 'raine.giderson@mailplus.com.au')
         }
 
+        if (reason != 'Change of Entity' && reason != 'Territory Transfer' && cancellation_date <= getDate()) {
+            nlapiSendEmail(696992, ['mailplussupport@protechly.com', 'mj@roundtableapps.com'], 'Deactivate Customer', ' Customer NS ID: ' + customer_id + '</br> Customer: ' + entityid + ' ' + companyName + '</br> Customer Franchisee NS ID: ' + zee_id, ['raine.giderson@mailplus.com.au', 'ankith.ravindran@mailplus.com.au'])
+        }
+
 
 
     } else {
-        if(isNullorEmpty($('#title').val())){
+        if (isNullorEmpty($('#title').val())) {
             userNoteRecord.setFieldValue('title', $('#title').val());
         } else {
             userNoteRecord.setFieldValue('title', 'User Note');
         }
-        
+
     }
 
 
