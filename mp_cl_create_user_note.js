@@ -64,12 +64,12 @@ function saveRecord() {
 
         if (isNullorEmpty($('#note').val())) {
             //112209 Chloe Young
-            if (reason != 'Change of Entity' && reason != 'Territory Transfer') {
+            if (reason != 'Change of Entity') {
                 nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName, 'Customer Cancelled effective ' + cancellation_date + '</br> If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br>', 'raine.giderson@mailplus.com.au');
             }
         } else {
             //112209 Chloe Young
-            if (reason != 'Change of Entity' && reason != 'Territory Transfer') {
+            if (reason != 'Change of Entity') {
                 nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName + ' effective ' + cancellation_date, 'If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br></br>' + $('#note').val(), 'raine.giderson@mailplus.com.au');
             }
         }
