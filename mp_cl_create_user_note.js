@@ -65,17 +65,17 @@ function saveRecord() {
         if (isNullorEmpty($('#note').val())) {
             //112209 Chloe Young
             if (reason != 'Change of Entity') {
-                nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName, 'Customer Cancelled effective ' + cancellation_date + '</br> If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br>', ['raine.giderson@mailplus.com.au', 'gabrielle.bathman@mailplus.com.au']);
+                nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName, 'Customer Cancelled effective ' + cancellation_date + '</br> If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br>', ['raine.giderson@mailplus.com.au', 'rianne.mansell@mailplus.com.au']);
             }
         } else {
             //112209 Chloe Young
             if (reason != 'Change of Entity') {
-                nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName + ' effective ' + cancellation_date, 'If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br></br>' + $('#note').val(), ['raine.giderson@mailplus.com.au', 'gabrielle.bathman@mailplus.com.au']);
+                nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' + companyName + ' effective ' + cancellation_date, 'If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br></br>' + $('#note').val(), ['raine.giderson@mailplus.com.au', 'rianne.mansell@mailplus.com.au']);
             }
         }
 
         if (reason != 'Change of Entity' && reason != 'Territory Transfer' && cancellation_date <= getDate()) {
-            nlapiSendEmail(696992, ['mailplussupport@protechly.com'], 'Deactivate Customer', ' Customer NS ID: ' + customer_id + '</br> Customer: ' + entityid + ' ' + companyName + '</br> Customer Franchisee NS ID: ' + zee_id, ['raine.giderson@mailplus.com.au', 'ankith.ravindran@mailplus.com.au', 'gabrielle.bathman@mailplus.com.au'])
+            nlapiSendEmail(696992, ['mailplussupport@protechly.com'], 'Deactivate Customer', ' Customer NS ID: ' + customer_id + '</br> Customer: ' + entityid + ' ' + companyName + '</br> Customer Franchisee NS ID: ' + zee_id, ['raine.giderson@mailplus.com.au', 'ankith.ravindran@mailplus.com.au', 'rianne.mansell@mailplus.com.au'])
         }
 
 
