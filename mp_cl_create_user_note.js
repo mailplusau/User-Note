@@ -3,7 +3,7 @@
  * @Date:   2021-09-15T17:00:25+10:00
  * @Filename: mp_cl_create_user_note.js
  * @Last modified by:   ankithravindran
- * @Last modified time: 2022-01-19T09:59:31+11:00
+ * @Last modified time: 2022-05-27T09:56:22+10:00
  */
 
 
@@ -80,8 +80,9 @@ function saveRecord() {
           companyName, 'Customer Cancelled effective ' + cancellation_date +
           '</br> If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br>', [
             'raine.giderson@mailplus.com.au',
-            'rianne.mansell@mailplus.com.au',
-            'fiona.harrison@mailplus.com.au'
+            'fiona.harrison@mailplus.com.au',
+            'turkan.koc@mailplus.com.au',
+            'popie.popie@mailplus.com.au'
           ]);
       }
     } else {
@@ -91,8 +92,9 @@ function saveRecord() {
           companyName + ' effective ' + cancellation_date,
           'If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br></br>' +
           $('#note').val(), ['raine.giderson@mailplus.com.au',
-            'rianne.mansell@mailplus.com.au',
-            'fiona.harrison@mailplus.com.au'
+            'fiona.harrison@mailplus.com.au',
+            'turkan.koc@mailplus.com.au',
+            'popie.popie@mailplus.com.au'
           ]);
       }
     }
@@ -101,7 +103,7 @@ function saveRecord() {
       nlapiSendEmail(696992, [
           'raine.giderson@mailplus.com.au',
           'ankith.ravindran@mailplus.com.au',
-          'rianne.mansell@mailplus.com.au', 'fiona.harrison@mailplus.com.au'
+          'fiona.harrison@mailplus.com.au'
         ],
         'Deactivate Customer', ' Customer NS ID: ' + customer_id +
         '</br> Customer: ' + entityid + ' ' + companyName +
