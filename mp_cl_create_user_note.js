@@ -24,7 +24,7 @@ if (role == 1000) {
   zee = 425904; //test-AR
 }
 
-$(window).load(function() {
+$(window).load(function () {
   // Animate loader off screen
   $(".se-pre-con").fadeOut("slow");;
 });
@@ -41,7 +41,7 @@ function showAlert(message) {
   // $(window).scrollTop($('#alert').offset().top);
 }
 
-$(document).on('click', '#alert .close', function(e) {
+$(document).on('click', '#alert .close', function (e) {
   $(this).parent().hide();
 });
 
@@ -69,6 +69,7 @@ function saveRecord() {
     var cancellation_date = customerRecord.getFieldValue('custentity13');
 
     var reason = nlapiGetFieldValue('custpage_reason')
+    var cancel = nlapiGetFieldValue('custpage_cancel')
 
     var partnerRecord = nlapiLoadRecord('partner', zee_id);
     var zee_email = partnerRecord.getFieldValue('email');
@@ -78,12 +79,12 @@ function saveRecord() {
       if (reason != 'Change of Entity') {
         nlapiSendEmail(112209, zee_email, 'Cancellation: - ' + entityid + ' ' +
           companyName, 'Customer Cancelled effective ' + cancellation_date +
-          '</br> If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br>', [
-            'raine.giderson@mailplus.com.au',
-            'fiona.harrison@mailplus.com.au',
-            'turkan.koc@mailplus.com.au',
-            'popie.popie@mailplus.com.au'
-          ]);
+        '</br> If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br>', [
+          'raine.giderson@mailplus.com.au',
+          'fiona.harrison@mailplus.com.au',
+          'turkan.koc@mailplus.com.au',
+          'popie.popie@mailplus.com.au'
+        ]);
       }
     } else {
       //112209 Chloe Young
@@ -92,19 +93,19 @@ function saveRecord() {
           companyName + ' effective ' + cancellation_date,
           'If an early invoice needs to be raised for the above mentioned customer, please contact accounts </br></br>' +
           $('#note').val(), ['raine.giderson@mailplus.com.au',
-            'fiona.harrison@mailplus.com.au',
-            'turkan.koc@mailplus.com.au',
-            'popie.popie@mailplus.com.au'
-          ]);
+          'fiona.harrison@mailplus.com.au',
+          'turkan.koc@mailplus.com.au',
+          'popie.popie@mailplus.com.au'
+        ]);
       }
     }
 
     if (reason != 'Change of Entity' && reason != 'Territory Transfer') {
       nlapiSendEmail(696992, [
-          'raine.giderson@mailplus.com.au',
-          'ankith.ravindran@mailplus.com.au',
-          'fiona.harrison@mailplus.com.au'
-        ],
+        'raine.giderson@mailplus.com.au',
+        'ankith.ravindran@mailplus.com.au',
+        'fiona.harrison@mailplus.com.au'
+      ],
         'Deactivate Customer', ' Customer NS ID: ' + customer_id +
         '</br> Customer: ' + entityid + ' ' + companyName +
         '</br> Customer Franchisee NS ID: ' + zee_id +
@@ -127,8 +128,13 @@ function saveRecord() {
 
   userNoteRecord.setFieldValue('direction', $('#direction option:selected').val());
   userNoteRecord.setFieldValue('notetype', $('#notetype option:selected').val());
-  userNoteRecord.setFieldValue('note', $('#note').val() +
-    '\n\n Operator / Franchisee Notified');
+  if (cancel == 'false' || cancel == false) {
+    userNoteRecord.setFieldValue('note', $('#note').val());
+  } else {
+    userNoteRecord.setFieldValue('note', $('#note').val() +
+      '\n\n Operator / Franchisee Notified');
+  }
+
   userNoteRecord.setFieldValue('author', nlapiGetUser());
   userNoteRecord.setFieldValue('notedate', getDate());
 
