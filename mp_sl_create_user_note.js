@@ -114,7 +114,12 @@ function userNote(request, response) {
 		var cancel = request.getParameter('custpage_cancel');
 
 		if (!isNullorEmpty(cancel)) {
-			response.sendRedirect('RECORD', 'customer', parseInt(customer_id), false);
+			if (isNullorEmpty(suitlet_id)) {
+				response.sendRedirect('RECORD', 'customer', parseInt(customer_id), false);
+			} else {
+				nlapiSetRedirectURL('SUITELET', suitlet_id, deploy_id, null, null);
+			}
+
 		} else {
 			var params = {
 				custid: parseInt(customer_id),

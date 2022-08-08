@@ -63,6 +63,9 @@ function saveRecord() {
     userNoteRecord.setFieldValue('title', 'Cancel');
     var customerRecord = nlapiLoadRecord('customer', customer_id);
     var zee_id = customerRecord.getFieldValue('partner');
+    if (isNullorEmpty(zee_id)) {
+      zee_id = 435;
+    }
     // var zee_text = customerRecord.getFieldText('partner');
     var companyName = customerRecord.getFieldValue('companyname');
     var entityid = customerRecord.getFieldValue('entityid');
