@@ -116,8 +116,10 @@ function userNote(request, response) {
 		if (!isNullorEmpty(cancel)) {
 			if (isNullorEmpty(suitlet_id)) {
 				response.sendRedirect('RECORD', 'customer', parseInt(customer_id), false);
-			} else {
+			} else if (suitlet_id == 'customscript_sl2_uninvoiced_customer_lis') {
 				nlapiSetRedirectURL('SUITELET', suitlet_id, deploy_id, null, null);
+			} else {
+				response.sendRedirect('RECORD', 'customer', parseInt(customer_id), false);
 			}
 
 		} else {
